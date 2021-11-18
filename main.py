@@ -6,23 +6,28 @@
 # TODO 9: Make descriptions of what you are doing!!
 class Move:
     def __init__(self):
-        self.starting_position = [1, 1]
         self.position = [1, 1]
         # TODO 1: make matrix
 
         # TODO 9: Make descriptions of what you are doing!!
-        self.matrix = [[x + 1 for x in range(3)] for x in range(3)]
 
         self.matrix_2 = []
-        start_number = 1
+
+        start_number = 0
         row = 3
         column = 3
-        for a in range(column):
-            one_row = []
-            for a in range(row):
-                one_row.append(start_number)
+
+        for a in range(row):
+            row = []
+
+            for a in range(column):
                 start_number += 1
-            self.matrix_2.append(one_row)
+                row.append(start_number)
+
+            print(row)
+            self.matrix_2.append(row)
+
+        print(self.matrix_2)
 
     # TODO 9: Make descriptions of what you are doing!!
     def boundary_condition(function):
@@ -31,13 +36,16 @@ class Move:
             # TODO 8: What is wrong??
             function(self)
             # print(f"2. Position after run function: {test.position}")
+            print(self.position)
+
+
 
             for self.xy in self.position:
 
-                if self.xy > 1:
+                if self.xy >= 3:
                     self.position[self.position.index(self.xy)] = 2
 
-                elif self.xy < 1:
+                elif self.xy <= 0:
                     self.position[self.position.index(self.xy)] = 0
 
             # print(f"3. Position after all function: {test.position}")
@@ -48,34 +56,37 @@ class Move:
 
     # TODO 9: Make descriptions of what you are doing!!
     def number_in_matrix(self):
-        return (self.matrix_2[self.position[0]][self.position[1]])
+        return self.matrix_2[self.position[0]][self.position[1]]
 
     # TODO 9: Make descriptions of what you are doing!!
     @boundary_condition
-    def Up(self):
+    def up(self):
         self.position[0] -= 1
 
     @boundary_condition
-    def Down(self):
+    def down(self):
         self.position[0] += 1
 
     @boundary_condition
-    def Right(self):
+    def right(self):
         self.position[1] += 1
 
     @boundary_condition
-    def Left(self):
+    def left(self):
         self.position[1] -= 1
 
     def move(self, input_move=None):
         if input_move == "U":
-            self.Up()
+            self.up()
         elif input_move == "D":
-            self.Down()
+            self.down()
         elif input_move == "R":
-            self.Right()
+            self.right()
         elif input_move == "L":
-            self.Left()
+            self.left()
+
+
+
 
 # TODO 9: Make descriptions of what you are doing!!
 
@@ -89,7 +100,9 @@ class Move:
 
 from_user_instrukction = input("Instruction are:\n")
 
-instructions_1 = """RUU
+instructions_1 = """LLLLLLLLLDDDDDRRRRRRR"""
+
+instructions_ = """RUU
 DDDL
 URLLL"""
 
@@ -101,12 +114,14 @@ DUULULUUDUDLLRLRURULLDLRRLURDLLDUDUDDRURRLUDULULD"""
 
 test = Move()
 pin = ""
+
+
 instructions = instructions.split("\n")
 for row in instructions:
     for letter in row:
-        print(f"Actual letter: {letter},\nPosition: {test.position},\nNumber: {test.number_in_matrix()}")
+        # print(f"Actual letter: {letter},\nPosition: {test.position},\nNumber: {test.number_in_matrix()}")
         test.move(input_move=letter)
-        print(f"Actual letter: {letter},\nPosition: {test.position},\nNumber: {test.number_in_matrix()}")
+        # print(f"Actual letter: {letter},\nPosition: {test.position},\nNumber: {test.number_in_matrix()}")
 
     pin += str(test.number_in_matrix())
     test.starting_position = test.position
