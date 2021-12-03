@@ -78,7 +78,7 @@ class PinPAD:
 pin_pad = PinPAD()
 pin = ""
 
-instructions = LUNAR_INSTRUCTION.split("\n")
+instructions = TESTING_INSTRUCTION.split("\n")
 for row in instructions:
     for letter in row:
         pin_pad.move(input_move=letter)
