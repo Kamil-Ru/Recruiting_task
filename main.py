@@ -8,7 +8,6 @@ LLRRDURRDLDULRDUDLRDRDRURULDU
 DULRRDRLRLUDLLURURLLRLRDLLDLLDRDUURL
 DUULULUUDUDLLRLRURULLDLRRLURDLLDUDUDDRURRLUDULULD"""
 
-# TODO 9: Make descriptions of what you are doing!!
 
 class PinPAD:
     def __init__(self):
@@ -76,16 +75,9 @@ class PinPAD:
             self.left()
 
 
-# TODO 9: Make descriptions of what you are doing!!
-
-# TODO 4: Write function what reads input and translates it (ease one)
-
-# TODO 11: Write function what reads input and translates it (HARD ONE)
-
 pin_pad = PinPAD()
 pin = ""
 
-# TODO: Comment
 instructions = LUNAR_INSTRUCTION.split("\n")
 for row in instructions:
     for letter in row:
@@ -93,6 +85,5 @@ for row in instructions:
     pin += str(pin_pad.number_on_pin_pad())
     pin_pad.starting_position = pin_pad.position
 
-print(f"PIN: {pin}\nEnding position on PIN_Pad: {pin_pad.position}")
+print(f"PIN: {pin}")
 
-pin_pad.number_on_pin_pad()
